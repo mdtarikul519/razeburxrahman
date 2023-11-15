@@ -1,0 +1,134 @@
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    #banner .slider-body {
+        height: 30vh;
+    }
+
+    #social-icon ul {
+        float: none;
+        margin-bottom: 20px;
+    }
+
+    .search-body {
+        text-align: center;
+    }
+
+    .search-body form {
+        display: inline-block;
+    }
+
+    #nav {
+        display: none;
+    }
+
+    #nav2 {
+        box-shadow: 1px 0px 27px rgba(0, 0, 0, 0.301);
+    }
+
+    .blog-list-body {
+        padding-right: 0;
+    }
+
+    #samprotik .owl-nav {
+        display: none;
+    }
+
+    .blog-list-body::before {
+        background: transparent;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    footer ul {
+        display: inline-block;
+        margin-left: 0;
+        transform: translate(0);
+        -webkit-transform: translate(0);
+        -moz-transform: translate(0);
+        -ms-transform: translate(0);
+        -o-transform: translate(0);
+    }
+    #about-me .left{
+        text-align: center;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #about-me .left{
+        text-align: center;
+    }
+    #banner .slider-body {
+        height: 30vh;
+    }
+
+    #social-icon ul {
+        float: none;
+        margin-bottom: 20px;
+    }
+
+    .search-body {
+        text-align: center;
+    }
+
+    .search-body form {
+        display: inline-block;
+    }
+
+    #nav {
+        display: none;
+    }
+
+    #nav2 {
+        box-shadow: 1px 0px 27px rgba(0, 0, 0, 0.301);
+    }
+
+    .blog-list-body {
+        padding-right: 0;
+    }
+
+    #samprotik .owl-nav {
+        display: none;
+    }
+
+    .blog-list-body::before {
+        background: transparent;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    footer ul {
+        display: inline-block;
+        margin-left: 0;
+        transform: translate(0);
+        -webkit-transform: translate(0);
+        -moz-transform: translate(0);
+        -ms-transform: translate(0);
+        -o-transform: translate(0);
+    }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #banner .slider-body{
+        height: 40vh;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    #banner .slider-body{
+        height: 40vh;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) and (max-width: 1400.98px){
+    #banner .slider-body{
+        height: 80vh;
+    }
+}

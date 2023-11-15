@@ -1,0 +1,29 @@
+@font-face{
+    font-family: 'bangla';
+    src: url("../fonts/SolaimanLipi.woff");
+}
+body{
+    font-family: 'bangla';
+}
+.main-nav > ul > li > a,
+.artigo-title-holder h1{
+    font-family: 'bangla';
+}
+
+/* nav section */
+
+.artigo-navigation-holder{
+    background:#fcb040;
+}
+
+.main-nav > ul > li:hover{
+    background: rgba(0,0,0,.1);
+}
+
+.main-nav > ul > li:hover a{
+    color : white;
+}
+
+.artigo-theme-container{
+    z-index: 999;
+}
