@@ -26,10 +26,15 @@ class postController extends Controller
         return view('admin.post.index');
     }
 
-    public function blog_view(){
-        $all_blog = NewsPostCount::orderBy('created_at', 'desc')->get();
+       public function all_view_count(){
+        $all_blog = NewsPostCount::get()->groupBy('blog_id');
         //dd($all_blog);
-        return view('admin.post.blog_view',compact('all_blog'));
+        return view('admin.post.all_blog_count', compact('all_blog'));
+       }
+    public function blog_view($slug)
+    {
+        $blogCount = newsPost::withCount('news_post_count')->where('slug', $slug)->orderBy('created_at', 'desc')->first();
+        return view('admin.post.blog_view', compact('blogCount'));
     }
 
     public function top_left_news(Request $request)
@@ -67,10 +72,10 @@ class postController extends Controller
 
     public function add(Request $request)
     {
-        $last = newsPost::limit(1)->orderBy('id','DESC')->get();
-        foreach($last as $sl) $sl = $sl->slug;
-        $slug=$sl+1;
-        
+        $last = newsPost::limit(1)->orderBy('id', 'DESC')->get();
+        foreach ($last as $sl) $sl = $sl->slug;
+        $slug = $sl + 1;
+
         $creator = Auth::user()->name;
         // $creator_photo = Auth::user()->photo;
         $insert = newsPost::insert([
@@ -141,7 +146,7 @@ class postController extends Controller
         ]);
 
         if ($request->hasFile('post_head_image')) {
-            $delete=newsPost::where('slug',$slug)->select('post_head_image')->firstOrFail();
+            $delete = newsPost::where('slug', $slug)->select('post_head_image')->firstOrFail();
             Storage::disk('public')->delete($delete->post_head_image);
             $file = $request->file('post_head_image');
             $path = $file->hashName('post_head_image');
@@ -409,5 +414,11 @@ class postController extends Controller
             Session::flash('success', 'value');
             return redirect()->route('post_add_video_view');
         }
+    }
+    public function countPostByMonth()
+    {
+        $all_blog = NewsPostCount::whereBetween('created_at', [request()->start_date, request()->end_date])->get()->groupBy('blog_id');
+        //dd($count);
+        return view('admin.post.all_blog_count', compact('all_blog'));
     }
 }

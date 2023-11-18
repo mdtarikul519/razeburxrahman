@@ -125,7 +125,9 @@ Route::group(['namespace' => 'admin', 'middleware' => 'auth'], function () {
 
     // post routes
     Route::get('/admin/post', [postController::class, 'index'])->name('post');
-    Route::get('/admin/blog-view', [postController::class, 'blog_view'])->name('blog.view');
+    Route::get('/admin/all-blog-count', [postController::class, 'all_view_count'])->name('all-view-count');
+    Route::get('/admin/blog-view/{id}', [postController::class, 'blog_view'])->name('post-view-count');
+    Route::post('/admin/blog-count-by-month', [postController::class, 'countPostByMonth'])->name('countPostByMonth');
 
 
     Route::get('/admin/top-left-news', [postController::class, 'top_left_news'])->name('top_left_news');

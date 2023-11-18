@@ -157,19 +157,20 @@
             <!-- ============================================================== -->
 
             {{-- @endphp --}}
+
             <form action="{{ route('countPostByMonth') }}" method="post">
                 @csrf
                 <div class="card card-default ">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div class="card-actions d-flex align-items-center gap-3">
-                            <a class="" data-action="collapse"><i class="ti-minus"></i></a>
-                            <a class="btn-minimize" data-action="expand"><i class="mdi mdi-arrow-expand"></i></a>
+                            {{-- <a class="" data-action="collapse"><i class="ti-minus"></i></a> --}}
+                            {{-- <a class="btn-minimize" data-action="expand"><i class="mdi mdi-arrow-expand"></i></a> --}}
                             {{-- <a class="btn-close" data-action="close"><i class="ti-close"></i></a> --}}
                             <h4 class="card-title m-b-0"> Count Post</h4>
                         </div>
 
                         <div class="d-flex gap-3">
-                            <input type="hidden" name="id" value="{{ $blogCount->id }}">
+                            <input type="hidden" name="id" value="">
                             <div class="d-flex align-items-center justify-content-between ">
                                 <label for="" class="mx-2">Start</label>
                                 <input name="start_date" class="form-control" type="date">
@@ -183,42 +184,44 @@
                     </div>
             </form>
 
-
-            @if (session()->has('data'))
+          @if (session()->has('data'))
                 <div class="text-warning p-1">
                     The result is : <span class="bold">{{ count(session('data')) ?? 0 }} </span>
                 </div>
             @endif
 
-            <div class="p-10 border border-start border-secondary">
+            {{-- <div class="p-10 border border-start border-secondary">
                 <p>Heading : {{ $blogCount->heading }}</p>
                 <p>Total View : {{ $blogCount->news_post_count_count }}</p>
+            </div> --}}
+
+            <div class="card-body collapse show">
+                <div class="" style="width:100%;overflow-x:scroll;">
+                    <table id="category_active"
+                        class="table table-striped table-bordered table-hover product-overview text-center">
+                        <thead class="sticky-top">
+                            <tr>
+                                <th>id</th>
+                                <th>blog id</th>
+                                <th>letest count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($all_blog as $index => $all_blogs)
+                                {{-- @dd($index); --}}
+                                <tr>
+
+                                    <td>{{ $loop->index +1 }}</td>
+                                    <td>{{ $index }} </td>
+                                    <td>{{ $all_blogs ? count($all_blogs) : 0 }} </td>
+
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
-            {{-- <div class="card-body collapse show">
-                        <div class="" style="width:100%;overflow-x:scroll;">
-                            <table id="category_active" class="table table-striped table-bordered table-hover product-overview text-center" >
-                                <thead class="sticky-top">
-                                    <tr>
-                                        <th>id</th>
-                                        <th>blog id</th>
-                                       <th>letest count</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($all_blog as $all_blogs)
-                                    <tr>
-                                        <td>{{$all_blogs->id}}</td>
-                                        <td>{{$all_blogs->blog_id}} </td>
-                                        <td>{{$all_blogs->total_count}} </td>
-
-                                    </tr>
-                                @endforeach
-                
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> --}}
 
         </div>
 

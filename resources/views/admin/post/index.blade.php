@@ -213,6 +213,7 @@
                                                 <a href="{{route('post_soft_delete',$select->slug)}}" onclick="return confirm('deactive Post!!')" class="text-inverse" title="" data-toggle="tooltip" data-original-title="deactive">
                                                     <i class="ti-trash"></i>
                                                 </a>
+                                                <a href="{{route('post-view-count',$select->slug)}}">Count</a>
                                             </td>
                                         </tr>
                                     @endforeach
